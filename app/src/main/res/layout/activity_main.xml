@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:background="#ff5722">
+
+    <TextView
+        android:id="@+id/txtRegYourself"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Register Yourself"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:padding="6dp"/>
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="70dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/txtRegYourself"
+        android:inputType="text"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:hint="@string/Name"
+        android:drawableLeft="@drawable/ic_profile"/>
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/txtName"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:hint="@string/Email"
+        android:drawableLeft="@drawable/baseline_email_24"
+        />
+    <EditText
+        android:id="@+id/MobNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/Email"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:hint="@string/mobNumber"
+        android:drawableLeft="@drawable/ic_mobile"/>
+    <EditText
+        android:id="@+id/DeliveryAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/MobNumber"
+        android:inputType="text"
+        android:maxLines="1"
+        android:hint="@string/DA"
+        android:drawableLeft="@drawable/address"
+        />
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/DeliveryAddress"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:hint="@string/Password"
+        android:drawableLeft="@drawable/baseline_lock_24"
+        />
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_below="@id/txtPassword"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:hint="@string/ConfirmPassword"
+        android:drawableLeft="@drawable/baseline_lock_24"/>
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="6dp"
+        android:layout_below="@id/Password"
+        android:backgroundTint="#f44336"
+        android:text="Register"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#ffffff"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>
