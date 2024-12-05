@@ -1,12 +1,12 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import org.w3c.dom.Text
+import com.subhajeet.foodrunner.R
 
 class WelcomeScreenActivity : AppCompatActivity() {
      lateinit var welcomeTextMessage :TextView
@@ -28,6 +28,9 @@ class WelcomeScreenActivity : AppCompatActivity() {
         password = sharedPreferences.getString("Password","123")
         txtDisplayMobileNumber.text= mobilenumber
         txtDisplayPassword.text = password
+
+        val intent = Intent(this@WelcomeScreenActivity, MainActivity::class.java)
+        startActivity(intent)
 
        /* welcomeMessage = findViewById(R.id.welcomeTextMessage)
         txtDisplayMobileNumber = findViewById(R.id.txtDisplayMobileNumber)

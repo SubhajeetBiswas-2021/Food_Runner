@@ -1,10 +1,11 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.subhajeet.foodrunner.R
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -37,7 +38,7 @@ class RegistrationActivity : AppCompatActivity() {
 
 
             // Create an Intent
-            val intent = Intent(this@RegistrationActivity,RegisterCredentialsActivity::class.java)
+            val intent = Intent(this@RegistrationActivity, RegisterCredentialsActivity::class.java)
             // Pass data to the next screen using Intent extras
             intent.putExtra("mobileNumber", mobileNumber)
             intent.putExtra("password", password)

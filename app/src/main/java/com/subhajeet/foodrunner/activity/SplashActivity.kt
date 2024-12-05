@@ -1,10 +1,11 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.subhajeet.foodrunner.R
 
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")

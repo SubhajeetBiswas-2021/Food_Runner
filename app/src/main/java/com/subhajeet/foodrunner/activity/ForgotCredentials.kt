@@ -1,8 +1,9 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.subhajeet.foodrunner.R
 
 class ForgotCredentials : AppCompatActivity() {
     lateinit var welcomeTextMessage:TextView

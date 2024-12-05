@@ -1,11 +1,11 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import com.subhajeet.foodrunner.R
 
 class ForgotPassword : AppCompatActivity() {
     lateinit var etMobileNumber:EditText
@@ -28,7 +28,7 @@ class ForgotPassword : AppCompatActivity() {
 
 
             // Create an Intent
-            val intent = Intent(this@ForgotPassword,ForgotCredentials::class.java)
+            val intent = Intent(this@ForgotPassword, ForgotCredentials::class.java)
             // Pass data to the next screen using Intent extras
             intent.putExtra("mobileNumber", mobileNumber)
             intent.putExtra("emailAddress", emailAddress)

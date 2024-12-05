@@ -1,4 +1,4 @@
-package com.subhajeet.foodrunner
+package com.subhajeet.foodrunner.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.subhajeet.foodrunner.R
 
 
 class Activitylogin : AppCompatActivity() {
@@ -29,7 +30,7 @@ class Activitylogin : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         if(isLoggedIn){
-            val intent =Intent(this@Activitylogin,WelcomeScreenActivity::class.java)
+            val intent =Intent(this@Activitylogin, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -44,35 +45,46 @@ class Activitylogin : AppCompatActivity() {
         btnLogin.setOnClickListener {
 
             // Retrieve entered data
-            val mobileNumber = etMobileNumber.text.toString()
+           /* val mobileNumber = etMobileNumber.text.toString()
             val password = etPassword.text.toString()
-            savePreferences(mobileNumber,password)
+            savePreferences(mobileNumber,password)*/
 
             // Create an Intent
-            val intent = Intent(this@Activitylogin,WelcomeScreenActivity::class.java)
+            val intent = Intent(this@Activitylogin, MainActivity::class.java)
             // Pass data to the next screen using Intent extras
-            intent.putExtra("mobileNumber", mobileNumber)
-            intent.putExtra("password", password)
+          /*  intent.putExtra("mobileNumber", mobileNumber)
+            intent.putExtra("password", password)*/
             // Start the new activity
-            startActivity(intent)
+            savePreferences()
+           startActivity(intent)
+
         }
         SignUp.setOnClickListener {
 
-            val intent = Intent(this@Activitylogin,RegistrationActivity::class.java)
+            val intent = Intent(this@Activitylogin, RegistrationActivity::class.java)
             startActivity(intent)
         }
         forgotPassword.setOnClickListener {
 
-            val intent = Intent(this@Activitylogin,ForgotPassword::class.java)
+            val intent = Intent(this@Activitylogin, ForgotPassword::class.java)
             startActivity(intent)
         }
     }
-    fun savePreferences(mobileNumber :String,password:String){
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
+    /*fun savePreferences(mobileNumber :String,password:String){
         sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
         sharedPreferences.edit().putString("MobileNumber", mobileNumber).apply()
-        sharedPreferences.edit().putString("Password", password).apply()
+        sharedPreferences.edit().putString("Password", password).apply()*/
+    fun savePreferences(){
+        sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
 
     }
+
 
 
 
