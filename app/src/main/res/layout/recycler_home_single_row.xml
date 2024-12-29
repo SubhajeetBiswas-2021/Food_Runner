@@ -52,20 +52,36 @@
             android:textColor="#357a38"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txtRestaurantRating"
-        android:layout_weight="1.2"
-        android:layout_width="0dp"
-        android:padding="4dp"
-        android:layout_height="wrap_content"
-        android:textColor="#ffca28"
-        android:text="4.5"
-        android:drawablePadding="4dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:drawableLeftCompat="@drawable/ic_rating">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2">
 
-    </TextView>
+            <TextView
+                android:id="@+id/txtRestaurantRating"
+                android:layout_width="990dp"
+                android:padding="4dp"
+                android:layout_height="wrap_content"
+                android:textColor="#ffca28"
+                android:text="4.5"
+                android:drawablePadding="4dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_rating">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/imgheart"
+                android:layout_below="@+id/txtRestaurantRating"
+                android:layout_width="990dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="60dp"
+                android:src="@drawable/grey_heart_icon"
+                android:contentDescription="Heart Icon" />
+
+
+        </RelativeLayout>
 
 
 </LinearLayout>

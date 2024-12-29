@@ -3,8 +3,8 @@
     <string name="mobile_number">Enter Mobile Number</string>
     <string name="password">Enter the Password</string>
     <string name="Name">Enter Your Name</string>
-    <string name="Email">Email Address</string>
-    <string name="mobNumber"> Mobile Number(10 digits)</string>
+    <string name="Email">Enter Email Address</string>
+    <string name="mobNumber"> Enter Mobile Number(10 digits)</string>
     <string name="DA">Delivery Address</string>
     <string name="Password">Choose a password(Min 4 characters)</string>
     <string name="ConfirmPassword">Confirm Password</string>
@@ -21,4 +21,5 @@
     <string name="FAQs_fragment">FAQS Fragment</string>
     <string name="LogOut_fragment">LOGOUT Fragment</string>
     <string name="name_of_the_restaurants">Name of Restaurants</string>
+    <string name="Signup">Don\'t have an account?Sign up now</string>
 </resources>

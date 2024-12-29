@@ -27,7 +27,6 @@
         android:background="@color/white"
         android:layout_below="@id/txtRegYourself"
         android:inputType="text"
-        android:maxLength="10"
         android:maxLines="1"
         android:hint="@string/Name"
         android:drawableLeft="@drawable/ic_profile"/>
@@ -72,7 +71,7 @@
         android:background="@color/white"
         android:layout_below="@id/MobNumber"
         android:inputType="text"
-        android:maxLines="1"
+        android:maxLines="2"
         android:hint="@string/DA"
         android:drawableLeft="@drawable/address"
         />
@@ -103,7 +102,7 @@
         android:background="@color/white"
         android:layout_below="@id/txtPassword"
         android:inputType="textPassword"
-        android:maxLength="10"
+        android:maxLength="16"
         android:maxLines="1"
         android:hint="@string/ConfirmPassword"
         android:drawableLeft="@drawable/baseline_lock_24"/>
@@ -121,10 +120,6 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="#ffffff"/>
-
-
-
-
 
 
 

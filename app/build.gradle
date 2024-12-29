@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
+
+apply plugin:'kotlin-kapt'                //for adding Room
 
 android {
     namespace 'com.subhajeet.foodrunner'
@@ -27,6 +30,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures{
+        viewBinding true                                   //done for backend
+    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -35,6 +42,13 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'com.google.firebase:firebase-auth:23.1.0'
+
+    def room_version = "2.6.1"                  //for adding Room
+
+    implementation "androidx.room:room-runtime:$room_version" //for adding Room
+
+    kapt "androidx.room:room-compiler:$room_version"   //for adding Room
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "androidx.activity:activity:1.6.1"
     implementation 'com.google.android.material:material:1.11.0'

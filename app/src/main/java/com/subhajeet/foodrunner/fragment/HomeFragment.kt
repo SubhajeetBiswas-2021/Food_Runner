@@ -3,6 +3,7 @@ package com.subhajeet.foodrunner.fragment
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings
 import androidx.fragment.app.Fragment
@@ -18,12 +19,15 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.subhajeet.foodrunner.R
 import com.subhajeet.foodrunner.adapter.HomeRecyclerAdapter
+import com.subhajeet.foodrunner.database.RestaurantDatabase
+import com.subhajeet.foodrunner.database.RestaurantEntity
 import com.subhajeet.foodrunner.model.Restaurant
 import com.subhajeet.foodrunner.util.ConnectionManager
 import org.json.JSONException
@@ -45,6 +49,8 @@ class HomeFragment : Fragment() {
 
     lateinit var progressLayout: RelativeLayout
     lateinit var progressBar: ProgressBar
+
+
 
     val restaurantInfoList = arrayListOf<Restaurant>()
 
@@ -106,6 +112,8 @@ class HomeFragment : Fragment() {
 
 
 
+
+
                             }
                         }else{
                             Toast.makeText(activity as Context,"Some error occurred!!", Toast.LENGTH_SHORT).show()
@@ -116,7 +124,14 @@ class HomeFragment : Fragment() {
 
                 },
                 Response.ErrorListener {
-                    Toast.makeText(activity as Context,"Volley error occured!!!",Toast.LENGTH_SHORT).show()
+
+                    if(activity != null) {
+                        Toast.makeText(
+                            activity as Context,
+                            "Volley error occured!!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }) {
 
                 override fun getHeaders(): MutableMap<String, String> {
@@ -147,7 +162,11 @@ class HomeFragment : Fragment() {
             dialog.create()
             dialog.show()
         }
+
+
         return view
     }
+
+
 
 }
