@@ -1,6 +1,7 @@
 package com.subhajeet.foodrunner.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.squareup.picasso.Picasso
 import com.subhajeet.foodrunner.R
+import com.subhajeet.foodrunner.activity.RestaurantDetailsActivity
 import com.subhajeet.foodrunner.database.RestaurantDatabase
 import com.subhajeet.foodrunner.database.RestaurantEntity
 import com.subhajeet.foodrunner.model.Restaurant
@@ -57,10 +59,14 @@ class HomeRecyclerAdapter(val context: Context, val itemList:ArrayList<Restauran
                 "Clicked on ${holder.txtRestaurantName.text}",
                 Toast.LENGTH_SHORT
             ).show()
+
+            val intent = Intent(context, RestaurantDetailsActivity::class.java)
+            intent.putExtra("restaurant_id",restaurant.restaurantId)
+            context.startActivity(intent)
         }
 
         // Check if the restaurant is already in the favorites
-        var restaurantId: String? = "100"
+        val restaurantId = restaurant.restaurantId
         val restaurantEntity = RestaurantEntity(
             restaurantId?.toInt() as Int,
             restaurantName = restaurant.restaurantName,

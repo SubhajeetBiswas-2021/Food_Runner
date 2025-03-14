@@ -32,6 +32,8 @@ class RegistrationActivity : AppCompatActivity() {
        // setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
+        val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+
         binding.btnRegister.setOnClickListener{
             startActivity(Intent(this,Activitylogin::class.java))
             finish()
@@ -40,10 +42,33 @@ class RegistrationActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener{
             val email = binding.Email.text.toString()
             val password = binding.txtPassword.text.toString()
+
+            val mobileNumber= binding.MobNumber.text.toString()
+            val name = binding.txtName.text.toString()
+            val deliveryAddress = binding.DeliveryAddress.text.toString()
+
             if(email.isNotEmpty() && password.isNotEmpty())
                 Activitylogin.auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                     if(it.isSuccessful){
-                        startActivity(Intent(this,Activitylogin::class.java))
+
+                        val editor = sharedPreferences.edit()
+                        editor.putString("name", name)
+                        editor.putString("email", email)
+                        editor.putString("mobileNumber", mobileNumber)
+                        editor.putString("deliveryAddress", deliveryAddress)
+                        editor.putString("password", password)
+                        editor.apply()
+
+                        Toast.makeText(this, "Registered Successfully!", Toast.LENGTH_SHORT).show()
+
+                        // Load the MyProfileFragment
+                       // val profileFragment = MyProfileFragment()
+                       // supportFragmentManager.beginTransaction()
+                         //   .replace(R.id.fragment_container, profileFragment)
+                           // .addToBackStack(null)
+                         //   .commit()
+
+                       startActivity(Intent(this,Activitylogin::class.java))           //was included
                         finish()
                     }
                 }.addOnFailureListener {
@@ -59,7 +84,7 @@ class RegistrationActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
 
 
-        val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+      //  val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
        /* btnRegister.setOnClickListener {
 

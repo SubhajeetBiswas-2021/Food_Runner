@@ -1,18 +1,15 @@
 package com.subhajeet.foodrunner.fragment
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
 import com.subhajeet.foodrunner.R
-import com.subhajeet.foodrunner.activity.MainActivity
 
 
 class MyProfileFragment : Fragment() {
@@ -31,10 +28,11 @@ class MyProfileFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_my_profile, container, false)
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("UserPrefs", AppCompatActivity.MODE_PRIVATE)
-        val name = sharedPreferences.getString("name", "Name not available")
-        val email = sharedPreferences.getString("email", "Email not available")
-        val mobileNumber = sharedPreferences.getString("mobileNumber", "Email not available")
-        val deliveryAddress = sharedPreferences.getString("deliveryAddress", "Address not available")
+        // Retrieve the data from arguments
+        val name = sharedPreferences.getString("name", "N/A")
+        val email = sharedPreferences.getString("email", "N/A")
+        val mobileNumber = sharedPreferences.getString("mobileNumber", "N/A")
+        val deliveryAddress = sharedPreferences.getString("deliveryAddress", "N/A")
 
         imgperson = view.findViewById(R.id.imgperson)
         txtname = view.findViewById(R.id.txtname)

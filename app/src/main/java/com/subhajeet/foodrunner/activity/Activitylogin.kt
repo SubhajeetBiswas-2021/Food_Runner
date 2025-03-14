@@ -36,50 +36,53 @@ class Activitylogin : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // setContentView(R.layout.activity_login)
-        
-        binding.SignUp.setOnClickListener{
-            startActivity(Intent(this,RegistrationActivity::class.java))
+
+        binding.SignUp.setOnClickListener {
+            startActivity(Intent(this, RegistrationActivity::class.java))
             finish()
         }
 
 
 
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            if(email.isNotEmpty() && password.isNotEmpty())
-                Activitylogin.auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{
-                    if(it.isSuccessful){
-                        startActivity(Intent(this,MainActivity::class.java))
-                        finish()
-                    }
-                    else{
-                        startActivity(Intent(this,RegistrationActivity::class.java))
-                    }
-                }.addOnFailureListener {
-                    Toast.makeText(this,it.localizedMessage, Toast.LENGTH_LONG).show()
+            if (email.isNotEmpty() && password.isNotEmpty())
+                Activitylogin.auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        } else {
+                            startActivity(Intent(this, RegistrationActivity::class.java))
+                        }
+                    }.addOnFailureListener {
+                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
                 }
         }
 
-        sharedPreferences = getSharedPreferences(getString(R.string.preference_file_name), MODE_PRIVATE)
-        val isLoggedIn =sharedPreferences.getBoolean("isLoggedIn",false)
 
 
 
-        /*if(isLoggedIn){
+
+            sharedPreferences = getSharedPreferences(getString(R.string.preference_file_name), MODE_PRIVATE)
+            val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+
+            /*if(isLoggedIn){
             val intent =Intent(this@Activitylogin, MainActivity::class.java)
             startActivity(intent)
             finish()
         }*/
 
 
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        btnLogin = findViewById(R.id.btnLogin)
-        SignUp = findViewById(R.id.SignUp)
-        forgotPassword = findViewById(R.id.forgotPassword)
+            etEmail = findViewById(R.id.etEmail)
+            etPassword = findViewById(R.id.etPassword)
+            btnLogin = findViewById(R.id.btnLogin)
+            SignUp = findViewById(R.id.SignUp)
+            forgotPassword = findViewById(R.id.forgotPassword)
 
-       /* btnLogin.setOnClickListener {
+            /* btnLogin.setOnClickListener {
 
             // Retrieve entered data
            /* val mobileNumber = etMobileNumber.text.toString()
@@ -96,33 +99,31 @@ class Activitylogin : AppCompatActivity() {
            startActivity(intent)
 
         }*/
-       /* SignUp.setOnClickListener {
+            /* SignUp.setOnClickListener {
 
             val intent = Intent(this@Activitylogin, RegistrationActivity::class.java)
             startActivity(intent)
         }*/
-        forgotPassword.setOnClickListener {
+            forgotPassword.setOnClickListener {
 
-            val intent = Intent(this@Activitylogin, ForgotPassword::class.java)
-            startActivity(intent)
+                val intent = Intent(this@Activitylogin, ForgotPassword::class.java)
+                startActivity(intent)
+            }
         }
-    }
 
-    override fun onPause() {
+        /*override fun onPause() {
         super.onPause()
         finish()
-    }
+    }*/
 
-    /*fun savePreferences(mobileNumber :String,password:String){
+        /*fun savePreferences(mobileNumber :String,password:String){
         sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
         sharedPreferences.edit().putString("MobileNumber", mobileNumber).apply()
         sharedPreferences.edit().putString("Password", password).apply()*/
-    fun savePreferences(){
-        sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
+        fun savePreferences() {
+            sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+
+        }
+
 
     }
-
-
-
-
-}

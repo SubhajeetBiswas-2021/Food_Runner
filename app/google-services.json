@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1014888740251",
+    "project_id": "foodrunner-ab139",
+    "storage_bucket": "foodrunner-ab139.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014888740251:android:88ad51617f3044d08c1d3e",
+        "android_client_info": {
+          "package_name": "com.subhajeet.foodrunner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8g_7ThcfoI1sj_lkNk-cGIBuc5iek2_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
