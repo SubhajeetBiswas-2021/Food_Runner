@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [RestaurantEntity::class], version = 1)
+@Database(entities = [RestaurantEntity::class,OrderEntity::class], version = 1,exportSchema = false)
 abstract class RestaurantDatabase : RoomDatabase() {
 
     abstract fun restaurantDao(): RestaurantDao
-   /* abstract fun orderDao(): OrderDao*/
+    abstract fun orderDao(): OrderDao
+
 
     companion object {
         @Volatile
@@ -37,6 +38,19 @@ abstract class RestaurantDatabase : RoomDatabase() {
                 instance
             }
 
+        }
+
+        fun getInstance(context: Context): RestaurantDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    RestaurantDatabase::class.java,
+                    "res-db"
+                ).fallbackToDestructiveMigration() //  line to handle schema changes
+                    .build()
+                INSTANCE = instance
+                instance
+            }
         }
     }
 }

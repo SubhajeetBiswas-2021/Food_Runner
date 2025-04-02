@@ -19,7 +19,7 @@
     <string name="home_fragment">Home</string>
     <string name="favourite_resturants_fragment">Favourites Resturants</string>
     <string name="FAQs_fragment">FAQS Fragment</string>
-    <string name="LogOut_fragment">LOGOUT Fragment</string>
+    <string name="LogOut">LOGOUT</string>
     <string name="name_of_the_restaurants">Name of Restaurants</string>
     <string name="Signup">Don\'t have an account?Sign up now</string>
 </resources>

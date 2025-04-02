@@ -5,12 +5,41 @@
     android:layout_height="match_parent"
     tools:context=".fragment.LogOutFragment">
 
-    <TextView
-        android:id="@+id/txtFAQs"
+
+    <View
+        android:id="@+id/View"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:background="#eeeeee" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/LogOut_fragment"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+        android:layout_below="@+id/View">
+
+
+        <TextView
+            android:id="@+id/CD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Current Device"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtFAQs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:padding="10dp"
+            android:text="@string/LogOut"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="end"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

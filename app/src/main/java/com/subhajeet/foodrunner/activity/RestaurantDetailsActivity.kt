@@ -2,6 +2,9 @@ package com.subhajeet.foodrunner.activity
 
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
@@ -11,12 +14,16 @@ import androidx.appcompat.view.menu.MenuAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import com.subhajeet.foodrunner.R
 import com.subhajeet.foodrunner.adapter.RestaurantMenuAdapter
+import com.subhajeet.foodrunner.database.OrderEntity
+import com.subhajeet.foodrunner.database.RestaurantDatabase
 import com.subhajeet.foodrunner.model.FoodItem
 
 class RestaurantDetailsActivity : AppCompatActivity() {
@@ -74,6 +81,7 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this@RestaurantDetailsActivity)
 
 
+
         val queue = Volley.newRequestQueue(this@RestaurantDetailsActivity)
 
         val url = "http://13.235.250.119/v2/restaurants/fetch_result/$id"
@@ -123,62 +131,55 @@ class RestaurantDetailsActivity : AppCompatActivity() {
             }
         queue.add(jsonObjectRequest)
 
-
-    }
-
-    /*private fun proceedToCart() {
-
-        /*Here we see the implementation of Gson.
-        * Whenever we want to convert the custom data types into simple data types
-        * which can be transferred across for utility purposes, we will use Gson*/
-        val gson = Gson()
-
-        /*With the below code, we convert the list of order items into simple string which can be easily stored in DB*/
-        val foodItems = gson.toJson(orderList)
-
-        val async = ItemsOfCart(activity as Context, resId.toString(), foodItems, 1).execute()
-        val result = async.get()
-        if (result) {
-            val data = Bundle()
-            data.putInt("resId", resId as Int)
-            data.putString("resName", resName)
-            val intent = Intent(activity, CartActivity::class.java)
-            intent.putExtra("data", data)
-            startActivity(intent)
-        } else {
-            Toast.makeText((activity as Context), "Some unexpected error", Toast.LENGTH_SHORT)
-                .show()
+        // Handle the "Proceed to Cart" button click
+        goToCart = findViewById(R.id.btnGoToCart)
+        goToCart.setOnClickListener {
+            val addedItems = recyclerAdapter.getAddedItems()
+            if (addedItems.isNotEmpty()) {
+                // Proceed to cart with the added items
+                // You can pass the addedItems list to the next activity or perform any other action
+                // Save items to the local database
+                SaveToDBAsync(applicationContext, addedItems, resId.toString()).execute()
+                // Navigate to CartActivity
+                val intent = Intent(this, CartActivity::class.java)
+                val bundle = Bundle()
+                //bundle.putInt("resId", resId as Int)
+                bundle.putString("resId", "$resId")
+                bundle.putString("resName", resName)
+                intent.putExtra("data", bundle)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please add items to the cart", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 
-    class ItemsOfCart(
-        context: Context,
-        val restaurantId: String,
-        val foodItems: String,
-        val mode: Int
-    ) : AsyncTask<Void, Void, Boolean>() {
-        val db = Room.databaseBuilder(context, RestaurantDatabase::class.java, "res-db").build()
+    override fun onBackPressed() {
+        // Clear the added items when the user navigates back
+        recyclerAdapter.clearAddedItems()
+        super.onBackPressed()
+    }
 
+    // AsyncTask to save items to the local database
+    class SaveToDBAsync(
+        context: Context,
+        private val foodItems: List<FoodItem>,
+        private val resId: String
+    ) : AsyncTask<Void, Void, Boolean>() {
+        private val db = Room.databaseBuilder(context, RestaurantDatabase::class.java, "res-db").build()
 
         override fun doInBackground(vararg params: Void?): Boolean {
-            when (mode) {
-                1 -> {
-                    db.orderDao().insertOrder(OrderEntity(restaurantId, foodItems))
-                    db.close()
-                    return true
-                }
-
-                2 -> {
-                    db.orderDao().deleteOrder(OrderEntity(restaurantId, foodItems))
-                    db.close()
-                    return true
-                }
-            }
-
-            return false
+            val foodItemsJson = Gson().toJson(foodItems) // Convert list to JSON string
+            val orderEntity = OrderEntity(resId, foodItemsJson)
+            db.orderDao().insertOrder(orderEntity)
+            db.close()
+            return true
         }
+    }
 
-    }*/
+
+
+
 }
 
